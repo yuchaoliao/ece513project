@@ -27,7 +27,8 @@ function accountInfoSuccess(data, textSatus, jqXHR) {
       $("#addprojectdataForm").before("<li class='collection-item'>longitude: " +
         projectdata.longitude + ", latitude: " + projectdata.latitude + 
 		", UVintensity: " + projectdata.UVintensity +
-		", speed: " + projectdata.speed + ", submitTime: " + projectdata.submitTime+ "</li>");
+		", speed: " + projectdata.speed + ", submitTime: " + projectdata.submitTime+
+		", deviceId: " + projectdata.deviceId +	"</li>");
    }
 }
 

@@ -101,6 +101,7 @@ router.get("/account" , function(req, res) {
 			         var projectdataList = []; 
 			         for (projectdata of projectdatas) {
 				         projectdataList.push({ 
+							   deviceId: device.deviceId,
 				               longitude: projectdata.longitude,
 				               latitude: projectdata.latitude,
 							   UVintensity: projectdata.UVintensity,
