@@ -77,7 +77,7 @@ router.post('/hit', function(req, res, next) {
     });
 });
 
-/* POST: Register new device. */
+/* POST: post data from device. */
 router.post('/UVFit', function(req, res, next) {
 
     var responseJson = { 
@@ -85,7 +85,7 @@ router.post('/UVFit', function(req, res, next) {
        message : ""
     };
 
-    // Ensure the POST data include properties id and email
+    // Ensure the POST data include properties id, apikey, longtitude,latitude, UVintensity, speed  
     if( !req.body.hasOwnProperty("deviceId") ) {
         responseJson.status = "ERROR";
         responseJson.message = "Request missing deviceId parameter.";
@@ -131,7 +131,7 @@ router.post('/UVFit', function(req, res, next) {
                return res.status(201).send(JSON.stringify(responseJson));
            }
            else {
-               // Create a new hw data with user email time stamp 
+               // Create a new project data with user email time stamp, and requiredata
                var newProjectData = new ProjectData({
                   userEmail: device.userEmail,
                   deviceid: req.body.deviceId,
@@ -141,7 +141,7 @@ router.post('/UVFit', function(req, res, next) {
 				  speed: req.body.speed
                });
 
-               // Save device. If successful, return success. If not, return error message.                                                        
+               // Save projectdata. If successful, return success. If not, return error message.                                                        
                newProjectData.save(function(err, newProjectData) {
                  if (err) {
                    responseJson.status = "ERROR";
